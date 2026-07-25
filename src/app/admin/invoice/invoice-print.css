@@ -1,0 +1,303 @@
+/* src/app/admin/invoice/invoice-print.css
+   A4 layout for the invoice document. On screen it renders at true A4
+   pixel size inside a scrollable preview pane (scaled down on narrower
+   viewports); the @media print block strips everything else off the page
+   so window.print() / "Save as PDF" produces a clean A4 document. */
+
+.invoice-preview-scale {
+  overflow: auto;
+  background: #e5e5e5;
+  padding: 24px 0;
+}
+
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #ffffff;
+  color: #1e1e1e;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 11pt;
+}
+
+.a4-page-content {
+  flex: 1;
+  padding: 18mm 16mm 14mm;
+}
+
+.a4-page-number {
+  padding: 0 16mm 10mm;
+  text-align: right;
+  font-size: 9pt;
+  color: #9a9a9a;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10mm;
+  gap: 16px;
+}
+
+.invoice-header-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.invoice-logo {
+  width: 28px;
+  height: 28px;
+  color: #1e1e1e;
+  flex-shrink: 0;
+}
+
+.invoice-company-name {
+  font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14pt;
+  line-height: 1;
+}
+
+.invoice-contact-block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.invoice-address {
+  font-size: 9.5pt;
+  color: #3c3c3c;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+.invoice-meta {
+  text-align: right;
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+.invoice-title {
+  font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 22pt;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.invoice-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 9.5pt;
+  color: #3c3c3c;
+}
+
+.invoice-meta-row span:first-child {
+  color: #9a9a9a;
+}
+
+.invoice-bill-to {
+  margin-bottom: 8mm;
+  padding-top: 6mm;
+  border-top: 1px solid #d9d9d9;
+}
+
+.invoice-bill-to-label {
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9a9a9a;
+  margin-bottom: 4px;
+}
+
+.invoice-client-name {
+  font-weight: 500;
+  font-size: 11.5pt;
+  margin-bottom: 2px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6mm;
+}
+
+.invoice-table thead tr {
+  border-bottom: 1.5px solid #1e1e1e;
+}
+
+.invoice-table th {
+  text-align: left;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9a9a9a;
+  font-weight: 500;
+  padding: 6px 4px;
+}
+
+.invoice-table td {
+  padding: 8px 4px;
+  border-bottom: 1px solid #ececec;
+  font-size: 10pt;
+  vertical-align: top;
+}
+
+.invoice-table td.col-desc p {
+  margin: 0;
+}
+
+.invoice-table td.col-desc p + p {
+  margin-top: 4px;
+}
+
+.invoice-table td.col-desc strong {
+  font-weight: 600;
+}
+
+.invoice-table td.col-desc em {
+  font-style: italic;
+}
+
+.invoice-table td.col-desc a {
+  color: var(--nalar-brand, #ff5900);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.invoice-table th.col-qty,
+.invoice-table th.col-rate,
+.invoice-table th.col-amount,
+.invoice-table td.col-qty,
+.invoice-table td.col-rate,
+.invoice-table td.col-amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.col-qty {
+  width: 60px;
+}
+.col-rate {
+  width: 100px;
+}
+.col-amount {
+  width: 110px;
+}
+
+.invoice-totals {
+  margin-left: auto;
+  width: 260px;
+  margin-bottom: 10mm;
+}
+
+.invoice-totals-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  font-size: 10pt;
+}
+
+.invoice-total-grand {
+  border-top: 1.5px solid #1e1e1e;
+  font-weight: 600;
+  font-size: 12pt;
+  margin-top: 4px;
+  padding-top: 8px;
+}
+
+.invoice-footer-info {
+  display: flex;
+  gap: 24px;
+  border-top: 1px solid #d9d9d9;
+  padding-top: 6mm;
+}
+
+.invoice-footer-col {
+  flex: 1;
+}
+
+.invoice-footer-label {
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9a9a9a;
+  margin-bottom: 4px;
+}
+
+.invoice-footer-text {
+  font-size: 9.5pt;
+  color: #3c3c3c;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+/* Shrink the preview (not the print output) to fit smaller screens. The
+   negative margin compensates for the visual space the scale transform
+   would otherwise leave behind. */
+@media screen and (max-width: 900px) {
+  .a4-page {
+    transform: scale(0.42);
+    transform-origin: top center;
+    margin-bottom: -430px;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1300px) {
+  .a4-page {
+    transform: scale(0.68);
+    transform-origin: top center;
+    margin-bottom: -250px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #invoice-print-area,
+  #invoice-print-area * {
+    visibility: visible;
+  }
+
+  #invoice-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+  }
+
+  .a4-page {
+    transform: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto;
+  }
+}
